@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vince Villa | UI/UX Designer Portfolio</title>
+    <meta name="description" content="Fourth-year BSIT student and UI/UX designer turning ideas into clear, usable interfaces.">
+    <meta name="theme-color" content="#0b1026">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- NAVIGATION -->
+    <header class="nav-wrap" id="navWrap">
+        <nav class="nav" id="nav" aria-label="Main">
+            <a class="nav-logo" href="#home">Vince Villa</a>
+            <div class="nav-links" id="navLinks">
+                <span class="nav-hl" aria-hidden="true"></span>
+                <a href="#about">About</a>
+                <a href="#resume">Resume</a>
+                <a href="#skills">Skills</a>
+                <a href="#achievements">Achievements</a>
+                <a href="#projects">Projects</a>
+                <a href="#hte">HTE</a>
+                <a href="#reflection">Reflection</a>
+            </div>
+            <a class="nav-cta" href="#contact">Contact <span aria-hidden="true">↗</span></a>
+        </nav>
+    </header>
+
+    <main id="main">
+
+        <!-- HERO -->
+        <section class="hero contours" id="home">
+            <div class="hero-left">
+                <h1 class="hero-name">Vince<br>Villa</h1>
+                <p class="tagline">Designing clear, usable interfaces.</p>
+                <ul class="hero-meta">
+                    <li>Muntinlupa City, Philippines</li>
+                    <li>Information Technology, 4th year</li>
+                    <li>UI/UX designer</li>
+                </ul>
+                <button class="aura-btn" id="auraBtn" type="button">
+                    <span class="aura-icon" aria-hidden="true">⇄</span>
+                    <span><strong>Show aura</strong><small>Switch portrait</small></span>
+                </button>
+            </div>
+
+            <!-- Hover the portrait: a liquid blob follows the cursor and shows the aura inside it.
+    Click "Show aura": the aura spreads over the portrait with glowing yellow edges. -->
+            <div class="portrait show-aura" id="portrait">
+                <img class="p-base" src="images/portrait.png" alt="Portrait of Vince Villa">
+                <img class="p-aura" src="images/aura.png" alt="" aria-hidden="true">
+
+                <!-- Hover blob (drawn by main.js) -->
+                <svg class="p-fx" aria-hidden="true" focusable="false">
+                    <defs>
+                        <filter id="fxGoo" x="-50%" y="-50%" width="200%" height="200%">
+                            <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur" />
+                            <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 24 -10" />
+                        </filter>
+                        <filter id="fxRing" x="-50%" y="-50%" width="200%" height="200%">
+                            <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur" />
+                            <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 24 -10" result="goo" />
+                            <feMorphology in="goo" operator="dilate" radius="3" result="fat" />
+                            <feComposite in="fat" in2="goo" operator="out" result="ring" />
+                            <feFlood flood-color="#f2c230" />
+                            <feComposite in2="ring" operator="in" result="line" />
+                            <feGaussianBlur in="line" stdDeviation="6" result="glow" />
+                            <feMerge><feMergeNode in="glow" /><feMergeNode in="line" /></feMerge>
+                        </filter>
+                        <filter id="fxSoft" x="-100%" y="-100%" width="300%" height="300%">
+                            <feGaussianBlur stdDeviation="12" />
+                        </filter>
+                        <mask id="fxMask" maskUnits="userSpaceOnUse">
+                            <g id="fxMaskBlobs" filter="url(#fxGoo)"></g>
+                        </mask>
+                    </defs>
+                    <image id="fxAura" href="images/aura.png" preserveAspectRatio="xMidYMax meet" mask="url(#fxMask)" />
+                    <image id="fxBase" href="images/portrait.png" preserveAspectRatio="xMidYMax meet" mask="url(#fxMask)" />
+                    <g id="fxRingBlobs" filter="url(#fxRing)"></g>
+                    <circle id="fxSpark" r="26" fill="#f2c230" filter="url(#fxSoft)" opacity="0" />
+                </svg>
+
+                <!-- Switch animation (drawn by main.js) -->
+                <canvas class="p-switch" aria-hidden="true"></canvas>
+            </div>
+            <aside class="panel">
+                <div class="frame panel-box">
+                    <p class="label">Currently</p>
+                    <p class="panel-title">BSIT student</p>
+                    <p class="panel-sub">STI College of Alabang</p>
+                </div>
+                <div class="frame panel-box">
+                    <p class="label">Latest project</p>
+                    <p class="panel-title" id="latestTitle">SkillConnect</p>
+                    <p class="panel-sub" id="latestMeta">Figma, 2026</p>
+                    <svg class="spark" viewBox="0 0 200 40" preserveAspectRatio="none" aria-hidden="true">
+                        <path d="M0 30 C30 8 50 4 80 10 S130 22 160 26 S190 30 200 32" fill="none" stroke="currentColor" stroke-width="1.5" />
+                    </svg>
+                </div>
+                <div class="frame panel-box">
+                    <p class="label">At a glance</p>
+                    <div class="glance">
+                        <div><small>Projects</small><b id="cProjects">1</b></div>
+                        <div><small>Focus areas</small><b id="cSkills">3</b></div>
+                        <div><small>Certificates</small><b id="cCerts">2</b></div>
+                    </div>
+                </div>
+            </aside>
+
+            <a class="btn-outline hero-cta" href="#projects">View projects <span aria-hidden="true">↗</span></a>
+        </section>
+
+        <!-- ABOUT: professional profile, career objective, work immersion goals -->
+        <section class="dark contours" id="about">
+            <div class="wrap">
+                <div class="about-grid">
+                    <div>
+                        <h2 class="big">About</h2>
+                        <p class="lead">I'm a fourth-year BSIT student at STI College of Alabang and a UI/UX designer. I like turning messy ideas into clear, easy-to-use interfaces.</p>
+                        <p class="lead dim">Good interfaces tell stories. My work joins careful thinking with clear visual communication.</p>
+                    </div>
+                    <div>
+                        <p class="label right">Who I am<br><span>Muntinlupa City, Philippines</span></p>
+                        <div class="facts">
+                            <div class="frame fact"><p class="label">Studying</p><p>Information Technology, year 4, STI College of Alabang</p></div>
+                            <div class="frame fact"><p class="label">Languages</p><p>English, Filipino</p></div>
+                            <div class="frame fact"><p class="label">Works across</p><p>UI/UX design</p></div>
+                            <div class="frame fact"><p class="label">Certificates</p><p>Java Fundamentals (Oracle Academy), Cyber Security event</p></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="goals">
+                    <div class="frame goal">
+                        <p class="label">Career objective</p>
+                        <p>My career objective is to maximize my design skills and grow as a UI/UX designer by working on real projects with real users.</p>
+                    </div>
+                    <div class="frame goal">
+                        <p class="label">Work immersion goals</p>
+                        <ul>
+                            <li>Apply my Figma, wireframing and prototyping skills to real work.</li>
+                            <li>Learn how design and development teams work together.</li>
+                            <li>Receive feedback from professionals and use it to improve.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESUME -->
+        <section class="light" id="resume">
+            <div class="wrap">
+                <h2 class="big">Resume</h2>
+                <div class="resume-grid">
+                    <div class="frame res">
+                        <p class="label">Personal information</p>
+                        <p class="res-title">Vince Villa</p>
+                        <ul>
+                            <li>UI/UX Designer</li>
+                            <li>Muntinlupa City, Philippines</li>
+                            <li><a href="mailto:vinxvilla302@gmail.com">vinxvilla302@gmail.com</a></li>
+                        </ul>
+                    </div>
+                    <div class="frame res">
+                        <p class="label">Educational background</p>
+                        <p class="res-title">Bachelor of Science in Information Technology</p>
+                        <ul>
+                            <li>STI College of Alabang</li>
+                            <li>4th Year Student</li>
+                        </ul>
+                    </div>
+                    <div class="frame res">
+                        <p class="label">Skills</p>
+                        <p class="res-title">Design and technical</p>
+                        <ul>
+                            <li>Figma, wireframing, prototyping, design systems</li>
+                            <li>Java, cyber security basics, HTML, CSS</li>
+                            <li>Time management, teamwork, problem-solving</li>
+                        </ul>
+                    </div>
+                    <div class="frame res">
+                        <p class="label">Achievements</p>
+                        <p class="res-title">SkillConnect capstone</p>
+                        <ul>
+                            <li>UI/UX Designer on a 4-person team</li>
+                            <li>Wireframes, prototype and design system in Figma</li>
+                        </ul>
+                    </div>
+                    <div class="frame res">
+                        <p class="label">Certificates</p>
+                        <p class="res-title">Two certificates</p>
+                        <ul>
+                            <li>Java Fundamentals, Oracle Academy (June 2024)</li>
+                            <li>Cyber Security event, participation (October 2024)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS (technical and soft) -->
+        <section class="light contours" id="skills">
+            <div class="wrap">
+                <div class="head-row">
+                    <h2 class="big">Skills</h2>
+                    <p class="label right teal">What I work with<br><span id="skillCount">3 areas</span></p>
+                </div>
+                <div class="skills-grid" id="skillsGrid"></div>
+            </div>
+        </section>
+
+        <!-- ACADEMIC ACHIEVEMENTS -->
+        <section class="light" id="achievements">
+            <div class="wrap">
+                <h2 class="big">Achievements</h2>
+                <div class="ach-grid" id="achGrid"></div>
+            </div>
+        </section>
+
+        <!-- WORK SAMPLES AND PROJECTS -->
+        <section class="light" id="projects">
+            <div class="wrap">
+                <h2 class="big">Projects</h2>
+                <div class="proj-grid" id="projGrid"></div>
+            </div>
+        </section>
+
+        <!-- COMPANY AND HTE EVALUATION -->
+        <section class="dark contours" id="hte">
+            <div class="wrap">
+                <div class="head-row">
+                    <h2 class="big">HTE evaluation</h2>
+                    <p class="label right">Top 3 target companies<br><span>Host training establishments</span></p>
+                </div>
+                <p class="lead">I compared three companies where I would like to do my Work Immersion, using the same criteria for each: company profile, industry type, reputation, learning opportunities, accessibility, and career growth potential.</p>
+
+                <div class="hte-cards">
+                    <article class="frame hte-card">
+                        <p class="label">Option 1</p>
+                        <h3>Webcast Technologies</h3>
+                        <p class="hte-meta">Information technology · Quezon City</p>
+                        <p>A private Philippine IT company founded in 2000. It offers GIS, GPS tracking systems, software development and mobile application development, with branches in Batangas, Cagayan de Oro, Davao and Cebu.</p>
+                        <p class="pc"><b>Advantages:</b> hands-on work in mapping, tracking and mobile apps; a smaller team where interns can be noticed.</p>
+                        <p class="pc"><b>Disadvantages:</b> less well known, and the head office is far from Muntinlupa City.</p>
+                    </article>
+                    <article class="frame hte-card">
+                        <p class="label">Option 2</p>
+                        <h3>Globe Telecom</h3>
+                        <p class="hte-meta">Telecommunications · Bonifacio Global City</p>
+                        <p>A publicly listed telecommunications company, founded in 1935 as Globe Wireless and known as Globe Telecom since 1992. It is described as the largest mobile network operator in the Philippines, and its GCash payment service is a subsidiary.</p>
+                        <p class="pc"><b>Advantages:</b> a strong reputation, large digital products used by millions of people, and published internship programs.</p>
+                        <p class="pc"><b>Disadvantages:</b> a big company means more competition for places, and the commute to Taguig takes time.</p>
+                    </article>
+                    <article class="frame hte-card">
+                        <p class="label">Option 3</p>
+                        <h3>Azeus Systems Philippines</h3>
+                        <p class="hte-meta">Software and IT services · Manila</p>
+                        <p>The Manila systems development centre of Azeus, set up in 1994, with a second development centre in Cebu. The centres are appraised at CMMI Level 5, and Azeus sells the Azeus Convene paperless meeting application.</p>
+                        <p class="pc"><b>Advantages:</b> mature software processes, a real product with real users, and posted internships.</p>
+                        <p class="pc"><b>Disadvantages:</b> more focused on development than on design, and the exact office location still needs to be confirmed.</p>
+                    </article>
+                </div>
+
+                <h3 class="sub">Comparative evaluation</h3>
+                <div class="table-wrap" tabindex="0" role="region" aria-label="HTE comparison table">
+                    <table class="hte-table">
+                        <thead>
+                            <tr><th scope="col">Criteria</th><th scope="col">Webcast Technologies</th><th scope="col">Globe Telecom</th><th scope="col">Azeus Systems Philippines</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><th scope="row">Industry type</th><td>Information technology (GIS, GPS, software, mobile apps)</td><td>Telecommunications and digital services</td><td>Software development and IT services</td></tr>
+                            <tr><th scope="row">Reputation</th><td>3 / 5<br><span>Established since 2000, less widely known</span></td><td>5 / 5<br><span>Largest mobile network operator in the country</span></td><td>4 / 5<br><span>CMMI Level 5 development centres</span></td></tr>
+                            <tr><th scope="row">Learning opportunities</th><td>4 / 5<br><span>Mapping, tracking and mobile projects</span></td><td>4 / 5<br><span>Internship programs in digital and technology teams</span></td><td>4 / 5<br><span>Structured software development with a real product</span></td></tr>
+                            <tr><th scope="row">Accessibility</th><td>2 / 5<br><span>Quezon City, far from Muntinlupa</span></td><td>3 / 5<br><span>Taguig, a moderate commute</span></td><td>3 / 5<br><span>Manila, to be confirmed</span></td></tr>
+                            <tr><th scope="row">Career growth</th><td>3 / 5</td><td>5 / 5</td><td>4 / 5</td></tr>
+                            <tr class="total"><th scope="row">Overall rating</th><td>3.0 / 5</td><td>4.3 / 5</td><td>3.8 / 5</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="table-hint" aria-hidden="true">Swipe the table sideways to see all three companies →</p>
+
+                <div class="frame reco">
+                    <p class="label">Final recommendation</p>
+                    <h3>Globe Telecom</h3>
+                    <p>Globe Telecom is my best choice. It gives me the strongest chance to practice UI/UX design on digital products that many people use, and it offers the strongest career growth and reputation. Azeus Systems Philippines is my second choice for its structured software environment, and Webcast Technologies is my third because of the distance and its smaller size. Globe will help me prepare for my career by showing me how design teams work inside a large organization and by building skills I can use after graduation.</p>
+                </div>
+
+                <p class="sources">Sources: <a href="https://en.wikipedia.org/wiki/Globe_Telecom" target="_blank" rel="noopener">Globe Telecom (Wikipedia)</a> · <a href="https://www.azeus.com/about-us/international-presence/" target="_blank" rel="noopener">Azeus International Presence</a> · <a href="https://craft.co/webcast-technologies" target="_blank" rel="noopener">Webcast Technologies (Craft)</a>. Ratings and the recommendation are my own evaluation.</p>
+            </div>
+        </section>
+
+        <!-- REFLECTION -->
+        <section class="light" id="reflection">
+            <div class="wrap">
+                <h2 class="big">Reflection</h2>
+                <p class="question">How has preparing for Work Immersion helped me understand my career goals and future professional responsibilities?</p>
+                <div class="reflect">
+                    <p>Preparing for Work Immersion has shown me that my goal is not just to finish internship hours. It is to grow as a designer. Before this, I thought about my future in very general terms. Researching Webcast Technologies, Globe Telecom and Azeus Systems Philippines made me compare real companies by the work they do, the learning they offer, how far they are, and where a career could go. I learned that the best choice is not always the biggest name. It is the place where I can practice my design skills on real work and learn from experienced people.</p>
+                    <p>Building this portfolio also helped me see my own strengths. As the UI/UX designer of our capstone project, SkillConnect, I created wireframes, a clickable prototype and a design system in Figma for three kinds of users: clients, workers and admins. Putting that work in one place showed me how much I have already done, and what I still need to improve, such as explaining my design decisions clearly and backing them with feedback from real users. My Java Fundamentals course and the Cyber Security event I joined remind me that good design also needs an understanding of how systems are built and kept safe.</p>
+                    <p>I also understand that a professional has responsibilities beyond skill. I must be on time, communicate clearly, work well with a team, accept feedback, and take care of the quality of what I submit. Work Immersion is my first chance to practice these habits in a real workplace. My career objective is to maximize my design skills, and this preparation gave me a clear plan: learn from my HTE, ask questions, apply feedback, and keep building a portfolio that tells my professional story.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section class="dark contours" id="contact">
+            <div class="wrap contact">
+                <h2 class="big">Contact</h2>
+                <p class="lead">Open to Work Immersion and internship opportunities. Send me a short note about what you have in mind.</p>
+                <p class="email"><a href="mailto:vinxvilla302@gmail.com">vinxvilla302@gmail.com</a></p>
+                <!-- Add your profiles here, then remove the comment marks:
+                <ul class="links">
+                  <li><a href="https://www.linkedin.com/in/YOUR-NAME" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+                  <li><a href="https://www.behance.net/YOUR-NAME" target="_blank" rel="noopener">Behance ↗</a></li>
+                  <li><a href="https://www.figma.com/@YOUR-NAME" target="_blank" rel="noopener">Figma ↗</a></li>
+                </ul>
+                -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer"><div class="wrap">© 2026 Vince Villa</div></footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
